@@ -1,0 +1,69 @@
+Jonathan Lee
+CS314 Section 6
+Assignment 6
+
+Problem 1
+	1. '(a b (c d (e f (g))))
+		(cons 'a
+			(cons 'b
+				(cons
+					(cons 'c
+						(cons 'd
+							(cons
+								(cons 'e
+									(cons 'f
+										(cons
+											(cons 'g '()) '())))
+							 '())))
+						)
+					)
+				)
+			)
+		)
+
+	
+	2. '(((((a) b c) d) (e f)) g)
+		(cons
+			(cons
+				(cons
+					(cons
+						(cons 'a ' ()) (cons 'b (cons 'c '())))
+					(cons 'd '()))
+				(cons 
+					(cons 'e (cons 'f '()))
+				(cons 'g '()))
+
+	3. '(a + 3) such that ((cadr '(a + 3)) 3 5) evaluates to 8
+		(cons 'a (cons + (cons 3 '())))
+
+Problem 2
+	1. (define flatten
+		(lambda (l)
+			(cond 
+				((null? l) '())
+				((list? (car l)) (append (rev (cdr l)) (cons (rev (car l)) '())))
+				(else (append (rev (cdr l)) (cons (car l) '()))))))
+		
+	2. (define rev
+		(lambda (l)
+			(cond
+				((null? l '())
+				((list? (car l)) append (rev (cdr l)) (cons (rev (car l)) '())))
+				(else (append (rev (cdr l)) (cons (car l) '()))))))
+
+	3. (define double
+		(lambda (l)
+			(cond
+				((null? l) '())
+				((list? (car l)) cons (delete atom (car l)) (delete atom (cdr l))))
+				(else (cons (car l) (cons (car l) (double (cdr l)))))))
+
+	4. (define delete
+		(lambda (atom l)
+			(cond 
+				((null? l) '())
+				((list? (car l)) (cons (delete atom (car l)) (delete atom (cdr l))))
+				(else (if (eq? atom (car l))
+					(delete atom (cdr l))	
+					(cons (car l) (delete atom (cdr l))))))))
+	

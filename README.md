@@ -1,3 +1,3 @@
 # CS314: Principles of Programming Languages
 
-Various assignments from Spring 2014.
+Various assignments from Fall 2014.
